@@ -3,5 +3,8 @@ return {
 	cmd = "Copilot",
 	event = "InsertEnter",
 	build = ":Copilot auth",
-	opts = {},
+	opts = {
+		suggestion = { enabled = false },
+		panel = { enabled = false },
+	},
 }
