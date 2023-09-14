@@ -106,6 +106,13 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure docker server
+		lspconfig["dockerls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "Dockerfile", "dockerfile" },
+		})
+
 		-- configure graphql language server
 		lspconfig["graphql"].setup({
 			capabilities = capabilities,
