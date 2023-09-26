@@ -2,6 +2,9 @@ return {
 	-- YOU ALMOST CERTAINLY WANT A MORE ROBUST nvim-treesitter SETUP
 	-- see https://github.com/nvim-treesitter/nvim-treesitter
 	"nvim-treesitter/nvim-treesitter",
+	dependencies = {
+		"windwp/nvim-ts-autotag",
+	},
 	opts = {
 		auto_install = true,
 		ensure_installed = {
@@ -22,6 +25,9 @@ return {
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
+		},
+		autotag = {
+			enable = true,
 		},
 	},
 	config = function(_, opts)

@@ -19,8 +19,7 @@ return {
 			insert_at_start = true,
 			animated = false,
 			auto_hide = false,
-			-- …etc.
 		},
-		version = "^1.0.0", -- optional: only update when a new 1.x version is released
+		version = "^1.7.0", -- optional: only update when a new 1.x version is released
 	},
 }
