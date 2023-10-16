@@ -7,6 +7,9 @@ return {
 	},
 	opts = {
 		auto_install = true,
+		indent = {
+			enable = true,
+		},
 		ensure_installed = {
 			"c",
 			"lua",
@@ -21,6 +24,10 @@ return {
 			"latex",
 			"python",
 			"go",
+			"eex",
+			"elixir",
+			"erlang",
+			"heex",
 		},
 		highlight = {
 			enable = true,

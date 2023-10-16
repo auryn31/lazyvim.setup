@@ -15,7 +15,7 @@ vim.opt.wrap = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- cursor line 
+-- cursor line
 vim.opt.cursorline = true
 
 -- appearance
@@ -23,8 +23,7 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.signcolumn = "yes"
 
-
--- backspace 
+-- backspace
 vim.opt.backspace = "indent,eol,start"
 
 vim.opt.swapfile = false
@@ -43,4 +42,3 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.colorcolumn = ""
 vim.opt.title = true
-
