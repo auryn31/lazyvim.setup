@@ -29,6 +29,9 @@ return {
 			update_focused_file = {
 				enable = true,
 			},
+			filters = {
+				git_ignored = false,
+			},
 		})
 
 		local nvim_tree_events = require("nvim-tree.events")

@@ -113,6 +113,12 @@ return {
 			filetypes = { "Dockerfile", "dockerfile" },
 		})
 
+		-- configure rust
+		lspconfig["rust_analyzer"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure graphql language server
 		lspconfig["graphql"].setup({
 			capabilities = capabilities,
@@ -129,6 +135,11 @@ return {
 
 		-- configure python server
 		lspconfig["pyright"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lspconfig["gopls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
