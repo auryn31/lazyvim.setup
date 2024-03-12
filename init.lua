@@ -10,3 +10,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- rename under curser
 vim.keymap.set("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- trouble keybindings
+vim.keymap.set("n", "<leader>tt", function()
+	require("trouble").toggle()
+end)
