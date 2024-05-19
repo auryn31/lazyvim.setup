@@ -1,3 +1,6 @@
+-- Video with some details:
+-- https://www.youtube.com/watch?v=C7juSZsM2Fg&list=WL&index=5&t=1s&ab_channel=AndrewCourter
+--
 local home = os.getenv("HOME")
 local workspace_path = home .. "/.local/share/nvim/jdtls-workspace/"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
