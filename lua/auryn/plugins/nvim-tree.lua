@@ -32,6 +32,10 @@ return {
 			filters = {
 				git_ignored = false,
 			},
+			git = {
+				enable = true,
+				timeout = 400,
+			},
 		})
 
 		local nvim_tree_events = require("nvim-tree.events")
