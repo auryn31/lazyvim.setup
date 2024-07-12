@@ -37,6 +37,9 @@ return {
 				enable = true,
 				timeout = 400,
 			},
+			view = {
+				side = "right",
+			},
 		})
 
 		local nvim_tree_events = require("nvim-tree.events")

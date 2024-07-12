@@ -9,9 +9,10 @@ return {
 			vim.g.barbar_auto_setup = false
 		end,
 		keys = {
-			{ "<C-.>", "<Cmd>BufferNext<CR>", desc = "Toggle pin" },
-			{ "<C-,>", "<Cmd>BufferPrevious<CR>", desc = "Toggle pin" },
-			{ "<C-/>", "<Cmd>BufferClose<CR>", desc = "Toggle pin" },
+			{ "<A-.>", "<Cmd>BufferNext<CR>", desc = "buffer next" },
+			{ "<A-,>", "<Cmd>BufferPrevious<CR>", desc = "buffer previous" },
+			{ "<A-c>", "<Cmd>BufferClose<CR>", desc = "close buffer" },
+			{ "<A-p>", "<Cmd>BufferPin<CR>", desc = "pin buffer" },
 		},
 		opts = {
 			-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
