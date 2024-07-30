@@ -38,7 +38,7 @@ return {
 				timeout = 400,
 			},
 			view = {
-				side = "right",
+				side = "left",
 			},
 		})
 
