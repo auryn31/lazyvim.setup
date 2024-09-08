@@ -7,6 +7,15 @@ return {
 		indent = {
 			enable = true,
 		},
+		autopairs = {
+			enable = true,
+		},
+		autotag = {
+			enable = false,
+		},
+		endwise = {
+			enable = true,
+		},
 		ensure_installed = {
 			"c",
 			"lua",
