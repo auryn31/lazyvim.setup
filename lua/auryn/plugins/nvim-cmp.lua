@@ -34,14 +34,14 @@ return {
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-				["<C-e>"] = cmp.mapping.abort(), -- close completion window
+				-- ["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
+				{ name = "copilot" },
 				{ name = "nvim_lsp" },
-				-- { name = "copilot" },
-				{ name = "supermaven" },
+				-- { name = "supermaven" },
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
@@ -52,6 +52,12 @@ return {
 					maxwidth = 50,
 					ellipsis_char = "...",
 				}),
+			},
+		})
+
+		cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+			sources = {
+				{ name = "dap" },
 			},
 		})
 	end,

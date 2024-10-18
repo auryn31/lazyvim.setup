@@ -54,16 +54,30 @@ local config = {
 					enabled = "all", -- literals, all, none
 				},
 			},
+			-- format = {
+			-- 	enabled = false,
+			-- },
+
 			format = {
-				enabled = false,
+				settings = {
+					url = "/Users/auryn/.local/share/java/intellij-java-google-style.xml",
+					profile = "GoogleStyle",
+				},
 			},
 		},
 	},
 
 	init_options = {
-		bundles = {},
+		bundles = {
+			"/Users/auryn/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.53.0.jar",
+		},
 	},
 }
+
+config["on_attach"] = function(client, bufnr)
+	require("jdtls").setup_dap({ hotcodereplace = "auto" })
+end
+
 require("jdtls").start_or_attach(config)
 
 vim.keymap.set("n", "<leader>co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "Organize Imports" })
@@ -87,3 +101,65 @@ vim.keymap.set(
 	"<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
 	{ desc = "Extract Method" }
 )
+
+function attach_to_debug()
+	local dap = require("dap")
+	dap.configurations.java = {
+		{
+			type = "java",
+			request = "attach",
+			name = "Attach to Remote JVM",
+			hostName = "localhost",
+			port = "5005",
+		},
+	}
+	dap.continue()
+end
+
+vim.keymap.set("n", "<leader>da", "<Cmd>lua attach_to_debug()<CR>", { desc = "Attach to Debug" })
+vim.keymap.set("n", "<leader>dc", '<Cmd>lua require"dap".continue()<CR>', { desc = "Debugger Continue" })
+vim.keymap.set("n", "<leader>ds", '<Cmd>lua require"dap".step_over()<CR>', { desc = "Debugger Step Over" })
+vim.keymap.set("n", "<leader>di", '<Cmd>lua require"dap".step_into()<CR>', { desc = "Debugger Step Into" })
+vim.keymap.set("n", "<leader>do", '<Cmd>lua require"dap".step_out()<CR>', { desc = "Debugger Step Out" })
+vim.keymap.set(
+	"n",
+	"<leader>db",
+	'<Cmd>lua require"dap".toggle_breakpoint()<CR>',
+	{ desc = "Debugger Toggle Breakpoint" }
+)
+
+-- TODO: cofigure -> https://github.com/Nawy/nvim-config-examples/blob/main/dap-java/init.lua
+--
+local function get_test_runner(test_name, debug)
+	if debug then
+		return "mvn test -Dmaven.surefire.debug -Dtest=" .. test_name
+	else
+		return "mvn test -Dtest=" .. test_name
+	end
+end
+
+local function run_java_test_method(debug)
+	local utils = require("auryn.plugins.dap-java.utils")
+	local method_name = utils.get_current_full_method_name("\\#")
+	vim.cmd("term " .. get_test_runner(method_name, debug))
+end
+
+local function run_java_test_class(debug)
+	-- require local folder dap-java and then the utils file
+	local utils = require("auryn.plugins.dap-java.utils")
+	local class_name = utils.get_current_full_class_name()
+	vim.cmd("term " .. get_test_runner(class_name, debug))
+end
+
+vim.keymap.set("n", "<leader>tm", function()
+	run_java_test_method()
+end)
+vim.keymap.set("n", "<leader>TM", function()
+	run_java_test_method(true)
+end)
+vim.keymap.set("n", "<leader>tc", function()
+	run_java_test_class()
+end)
+vim.keymap.set("n", "<leader>TC", function()
+	run_java_test_class(true)
+end)

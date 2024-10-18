@@ -21,6 +21,6 @@ return {
 			animated = false,
 			auto_hide = false,
 		},
-		version = "^1.7.0", -- optional: only update when a new 1.x version is released
+		version = "^1.9.0", -- optional: only update when a new 1.x version is released
 	},
 }

@@ -183,9 +183,10 @@ return {
 			},
 		})
 
+		-- require("java").setup()
 		lspconfig["jdtls"].setup({
-			-- capabilities = capabilities,
-			-- on_attach = on_attach,
+			capabilities = capabilities,
+			on_attach = on_attach,
 		})
 	end,
 }
