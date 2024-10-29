@@ -1,6 +1,9 @@
 -- Video with some details:
 -- https://www.youtube.com/watch?v=C7juSZsM2Fg&list=WL&index=5&t=1s&ab_channel=AndrewCourter
 --
+-- In case of error
+-- error code 13 failed to start
+-- try to delete ~/.cache/jdtls
 local home = os.getenv("HOME")
 local workspace_path = home .. "/.local/share/nvim/jdtls-workspace/"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -30,7 +33,7 @@ local config = {
 		"-jar",
 		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 		"-configuration",
-		home .. "/.local/share/nvim/mason/packages/jdtls/config_mac",
+		home .. "/.local/share/nvim/mason/packages/jdtls/config_mac_arm",
 		"-data",
 		workspace_dir,
 	},
@@ -74,14 +77,14 @@ local config = {
 	},
 }
 
-config["on_attach"] = function(client, bufnr)
+config["on_attach"] = function(_, _)
 	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 end
 
 require("jdtls").start_or_attach(config)
 
 vim.keymap.set("n", "<leader>co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "Organize Imports" })
-vim.keymap.set("n", "<leader>crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "Extract Variable" })
+-- vim.keymap.set("n", "<leader>crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "Extract Variable" })
 vim.keymap.set(
 	"v",
 	"<leader>crv",
@@ -102,7 +105,7 @@ vim.keymap.set(
 	{ desc = "Extract Method" }
 )
 
-function attach_to_debug()
+local function attach_to_debug()
 	local dap = require("dap")
 	dap.configurations.java = {
 		{

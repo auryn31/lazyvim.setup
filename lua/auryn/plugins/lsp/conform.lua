@@ -18,6 +18,7 @@ return {
 				json = { "prettier" },
 				-- INFO: Install google-java-format with `brew install google-java-format`
 				java = { "google-java-format" },
+				kotlin = { "ktlint" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()

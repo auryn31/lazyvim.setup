@@ -40,9 +40,11 @@ return {
 				"dockerls",
 				"elmls",
 				-- "erlangls",
-				-- "gopls",
+				"gopls",
 				"elixirls",
 				-- "jdtls",
+				-- "kotlin-language-server",
+				-- "kotlin-debug-adapter",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -54,6 +56,7 @@ return {
 				"prettier", -- ts/js formatter
 				"stylua", -- lua formatter
 				"eslint", -- ts/js linter
+				"ktlint",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true,

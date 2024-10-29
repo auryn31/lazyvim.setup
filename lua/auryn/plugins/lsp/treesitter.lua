@@ -38,6 +38,8 @@ return {
 			"vimdoc",
 			"yaml",
 			"gleam",
+			"kotlin",
+			"go",
 		},
 		incremental_selection = {
 			enable = true,

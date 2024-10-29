@@ -15,7 +15,7 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		local opts = { noremap = true, silent = true }
-		local on_attach = function(client, bufnr)
+		local on_attach = function(_, bufnr)
 			opts.buffer = bufnr
 
 			-- set keybinds
@@ -162,6 +162,12 @@ return {
 			on_attach = on_attach,
 		})
 
+		lspconfig["kotlin_language_server"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "kotlin" },
+		})
+
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
@@ -187,6 +193,7 @@ return {
 		lspconfig["jdtls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "java" },
 		})
 	end,
 }
