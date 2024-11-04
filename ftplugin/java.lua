@@ -119,11 +119,14 @@ local function attach_to_debug()
 	dap.continue()
 end
 
-vim.keymap.set("n", "<leader>da", "<Cmd>lua attach_to_debug()<CR>", { desc = "Attach to Debug" })
+vim.keymap.set("n", "<leader>da", function()
+	attach_to_debug()
+end, { desc = "Attach to Debug" })
 vim.keymap.set("n", "<leader>dc", '<Cmd>lua require"dap".continue()<CR>', { desc = "Debugger Continue" })
 vim.keymap.set("n", "<leader>ds", '<Cmd>lua require"dap".step_over()<CR>', { desc = "Debugger Step Over" })
 vim.keymap.set("n", "<leader>di", '<Cmd>lua require"dap".step_into()<CR>', { desc = "Debugger Step Into" })
 vim.keymap.set("n", "<leader>do", '<Cmd>lua require"dap".step_out()<CR>', { desc = "Debugger Step Out" })
+vim.keymap.set("n", "<leader>dr", '<Cmd>lua require"dap".repl.open()<CR>', { desc = "Debugger Step Out" })
 vim.keymap.set(
 	"n",
 	"<leader>db",
@@ -153,6 +156,15 @@ local function run_java_test_class(debug)
 	local class_name = utils.get_current_full_class_name()
 	vim.cmd("term " .. get_test_runner(class_name, debug))
 end
+
+local function show_dap_centered_scopes()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end
+
+vim.keymap.set("n", "<leader>ds", function()
+	show_dap_centered_scopes()
+end)
 
 vim.keymap.set("n", "<leader>tm", function()
 	run_java_test_method()

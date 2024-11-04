@@ -40,6 +40,7 @@ return {
 			"gleam",
 			"kotlin",
 			"go",
+			"haskell",
 		},
 		incremental_selection = {
 			enable = true,

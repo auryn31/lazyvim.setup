@@ -45,6 +45,7 @@ return {
 				-- "jdtls",
 				-- "kotlin-language-server",
 				-- "kotlin-debug-adapter",
+				"hls",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -57,6 +58,7 @@ return {
 				"stylua", -- lua formatter
 				"eslint", -- ts/js linter
 				"ktlint",
+				"fourmolu",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true,

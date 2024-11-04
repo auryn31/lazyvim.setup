@@ -162,6 +162,15 @@ return {
 			on_attach = on_attach,
 		})
 
+		lspconfig["hls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			-- filetypes = { "haskell", "lhaskell", "cabal" },
+			-- hls = function()
+			-- 	return true
+			-- end,
+		})
+
 		lspconfig["kotlin_language_server"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
