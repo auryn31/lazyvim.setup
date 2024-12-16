@@ -1,9 +1,11 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
+	dependencies = {
+		"folke/snacks.nvim",
+	},
 	opts = function()
 		local icons = require("lazyvim.config").icons
-		local Util = require("lazyvim.util")
 
 		return {
 			options = {
@@ -32,24 +34,25 @@ return {
           {
             function() return require("noice").api.status.command.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = Util.ui.fg("Statement"),
+            -- color = Util.ui.fg("Statement"),
+            color = {{fg=Snacks.util.color('Statement')}}
           },
           -- stylua: ignore
           {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = Util.ui.fg("Constant"),
+            color = {{fg=Snacks.util.color('Constant')}}
           },
           -- stylua: ignore
           {
             function() return "  " .. require("dap").status() end,
             cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = Util.ui.fg("Debug"),
+            color = {{fg=Snacks.util.color('Debug')}}
           },
 					{
 						require("lazy.status").updates,
 						cond = require("lazy.status").has_updates,
-						color = Util.ui.fg("Special"),
+						color = { { fg = Snacks.util.color("Special") } },
 					},
 					{
 						"diff",
