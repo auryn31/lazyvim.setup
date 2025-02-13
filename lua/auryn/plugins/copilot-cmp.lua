@@ -2,6 +2,7 @@ return {
 	"zbirenbaum/copilot-cmp",
 	dependencies = "copilot.lua",
 	opts = {},
+	enabled = true,
 	config = function(_, opts)
 		local copilot_cmp = require("copilot_cmp")
 		copilot_cmp.setup(opts)
